@@ -70,5 +70,6 @@ From here, it is much easier to identify the tags containing the data that you'd
         for tag in xml_tree:
           if tag_identifier is 'h1':
             print tag_identifier
+            # will print 'Major histocompatibility complex haplotyping and long-amplicon allele discovery in cynomolgus macaques...'
             
 A parser for PubMed has been created in this repo, and [is available here]().
