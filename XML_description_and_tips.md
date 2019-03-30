@@ -22,9 +22,9 @@ To recap:
         <html><h1><div>HelloWorld!</div></h1></html>
         
 ### More XML
-Parsing XML is not a trivial task, but it is also not onerously difficult. The more you practice and familiarize yourself with XML in general, the faster your will become at parsing XML data.
+XML is a very structured language, which makes it ideal for holding data.  In the example above, the \<html> tag is the root tag, \<h1> is a child tag of \<html>, and \<div> is a child tag of \<h1>
 
-XML tags can have data stored in the tags themselves, and identified as Elements, and they can have data stored in Attributes of the XML tags. There are [several sites that list XML tags](https://www.w3schools.com/xml/xml_elements.asp) and the accompanying rules for formatting them, as well as other ways that XML tags can be created and used. The reader is encouraged to at least skim these, because only a cursory explanation will be provided here that is directly relevant to parsing NCBI Pubmed data.
+XML can have data stored in the tags themselves, and are identified for parsing purposes as Elements. They can also have data stored in Attributes of the XML tags. There are [several sites that list XML tags](https://www.w3schools.com/xml/xml_elements.asp) and the accompanying rules for formatting them, as well as other ways that XML tags can be created and used. The reader is encouraged to at least skim these, because only a cursory explanation will be provided here that is directly relevant to parsing NCBI Pubmed data.
 
 Continuing the example above, if we wanted to create an XML document that had valid syntax, it would start with a header that identified the version of XML and the document type to the software that read it. Next would come the \<html> tag, usually followed (but not required) by a comment line.  If we wanted to add an attribute to the \<div> tag, we could do that here as well. Single or double-quotes can be used in attributes, as well as nested single/double quotes.
 
@@ -33,11 +33,22 @@ Continuing the example above, if we wanted to create an XML document that had va
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
         <-- This is my first XML document -->
-        <html>
           <h1>
             <div type="string">HelloWorld!</div>
           </h1>
         </html>
         
+### Parsing XML
+Parsing XML is not a trivial task, but it is also not onerously difficult. The more you practice and familiarize yourself with XML in general, the faster your will become at parsing XML data.
 
+A typical problem with parsing is simply being able to decipher the data, particularly if the XML document is simply pulled (or 'scraped') from a website. There are numerous tools that make reading XML easier; one example is TextEdit on MacOSX will automatically render an XML document into something similar to what a webpage would show unless you explicitly tell it not to do so.
+
+When parsing XML, one might be tempted to use grep or regular expressions (Regex), however, this should only be done as a last resort, for several reasons, including:
+* As mentioned above, XML can have numerous tags on a single line, and most flavors of Regex rely on scanning multiple lines.
+* You will have to create absurdly long Regex patterns just to separate XML tags
+* Typically you need to at least have an idea of what keyword or anchor that you are looking for before starting, which can be a nontrivial task in itself
+
+One example shown here to at least partly sort an XML file can be used with the [Atom](https://atom.io) text editor:
+
+* Load the file 
 
