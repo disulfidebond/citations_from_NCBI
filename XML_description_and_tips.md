@@ -50,5 +50,25 @@ When parsing XML, one might be tempted to use grep or regular expressions (Regex
 
 One example shown here to at least partly sort an XML file can be used with the [Atom](https://atom.io) text editor:
 
-* Load the file 
+* Create a new blank Atom document, then copy and paste the XML into that document.  Next, do a search/replace for '><' , to be replaced by '>' followed by a newline, followed by '<' 
+  * (Important: you will have to copy a newline from a text document, or use the "Regex" option with '\n'.  The code below can be copied and pasted into the Replace field)
 
+        >
+        
+        <
+
+![](https://github.com/disulfidebond/citations_from_NCBI/blob/master/parsingTrick1_ATOM.png)
+
+* Click 'Replace All'
+![](https://github.com/disulfidebond/citations_from_NCBI/blob/master/parsingTrick2_ATOM.png)
+
+**Ta-Daaa!**
+
+From here, it is much easier to identify the tags containing the data that you'd like to parse.  For example, if you wanted to extract the title, the pseudocode for this would be:
+
+        xml_tree = dataFromXMLDocument
+        for tag in xml_tree:
+          if tag_identifier is 'h1':
+            print tag_identifier
+            
+A parser for PubMed has been created in this repo, and [is available here]().
